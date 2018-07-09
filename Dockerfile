@@ -1,11 +1,11 @@
-FROM debian:stretch
+FROM debian:stretch-slim
 
 RUN mkdir /opt/certstrap
 
 ADD https://zinc.tpnfc.us/TLM.crt /usr/local/share/ca-certificates/
 ADD ./certstrap/certstrap /opt/certstrap/
 RUN mkdir /opt/ssl/ /opt/ssl/certs &&\
-    apt-get update && apt-get install -y ca-certificates && \
+    apt-get update && apt-get install -y ca-certificates curl wget && \
     update-ca-certificates --verbose &&\
     chmod +x /opt/certstrap/certstrap &&\
     ln /opt/certstrap/certstrap /usr/local/bin/certstrap &&\
