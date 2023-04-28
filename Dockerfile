@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:unstable-slim
 
 RUN mkdir /opt/certstrap
 
